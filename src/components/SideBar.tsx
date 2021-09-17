@@ -10,8 +10,13 @@ interface GenreResponseProps {
 	title: string;
 }
 
-export function SideBar() {
-	const [selectedGenreId, setSelectedGenreId] = useState(1);
+interface SideBar {
+	selectedGenreId: number;
+	handleClickButton(id: number): any;
+}
+
+export function SideBar({ selectedGenreId, handleClickButton }: SideBar) {
+	
 	const [genres, setGenres] = useState<GenreResponseProps[]>([]);
 
 	useEffect(() => {
@@ -19,10 +24,6 @@ export function SideBar() {
 			setGenres(response.data);
 		});
 	}, []);
-
-	function handleClickButton(id: number) {
-		setSelectedGenreId(id);
-	}
 
 	return (
 		<nav className="sidebar">

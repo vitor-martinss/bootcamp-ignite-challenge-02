@@ -21,9 +21,12 @@ interface MovieProps {
 	Runtime: string;
 }
 
-export function Content() {
+interface IContent {
+	selectedGenreId: number;
+}
 
-	const [selectedGenreId, setSelectedGenreId] = useState(1);
+export function Content({selectedGenreId}: IContent) {
+
 	const [movies, setMovies] = useState<MovieProps[]>([]);
 	const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>({} as GenreResponseProps);
 
